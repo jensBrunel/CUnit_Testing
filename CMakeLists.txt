@@ -23,3 +23,13 @@ ExternalProject_Add(cunit
     BUILD_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make #Build command
     INSTALL_COMMAND ls ./     # skip installation of external project
 )
+
+set(CUNIT_LIBRARY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/CUnit/Sources/.libs)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+add_subdirectory(DUT)
+add_subdirectory(testcases)
+
+add_executable(UnitTesting main.c)
+target_link_libraries(UnitTesting DUT testcases ${CUNIT_LIBRARY_PATH})
