@@ -1,1 +1,1 @@
-/usr/bin/cc  -fPIC    -shared -Wl,-soname,libDUT.so -o libDUT.so CMakeFiles/DUT.dir/dut.c.o 
+/usr/bin/cc  -fPIC    -shared -Wl,-soname,libDUT.so -o libDUT.so CMakeFiles/DUT.dir/dut.c.o  -L/home/jens/workspace/CUnit_Testing  -L/home/jens/workspace/CUnit_Testing/CUnit/lib 

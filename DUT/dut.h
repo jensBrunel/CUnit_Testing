@@ -8,7 +8,7 @@
 #ifndef DUT_DUT_H_
 #define DUT_DUT_H_
 
-
+extern int funca(int a);
 
 
 
