@@ -1,1 +1,1 @@
-/usr/bin/cc  -fPIC    -shared -Wl,-soname,libtestcases.so -o libtestcases.so CMakeFiles/testcases.dir/testcases.c.o 
+/usr/bin/cc  -fPIC    -shared -Wl,-soname,libtestcases.so -o libtestcases.so CMakeFiles/testcases.dir/testcases.c.o  -L/home/jens/workspace/CUnit_Testing  -L/home/jens/workspace/CUnit_Testing/CUnit/lib 

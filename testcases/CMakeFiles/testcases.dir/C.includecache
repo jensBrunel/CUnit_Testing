@@ -9,4 +9,6 @@
 /home/jens/workspace/CUnit_Testing/testcases/testcases.c
 stdio.h
 -
+CUnit/Basic.h
+/home/jens/workspace/CUnit_Testing/testcases/CUnit/Basic.h
 
