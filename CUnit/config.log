@@ -54,6 +54,7 @@ configure:2681: result: yes
 configure:2710: checking whether make supports nested variables
 configure:2727: result: yes
 configure:3114: checking for gcc
+configure:3130: found /usr/bin/gcc
 configure:3141: result: gcc
 configure:3370: checking for C compiler version
 configure:3379: gcc --version >&5
@@ -630,8 +631,8 @@ config.status:1369: executing libtool commands
 ac_cv_build=x86_64-unknown-linux-gnu
 ac_cv_c_compiler_gnu=yes
 ac_cv_c_const=yes
-ac_cv_env_CC_set=set
-ac_cv_env_CC_value=gcc
+ac_cv_env_CC_set=
+ac_cv_env_CC_value=
 ac_cv_env_CFLAGS_set=
 ac_cv_env_CFLAGS_value=
 ac_cv_env_CPPFLAGS_set=
