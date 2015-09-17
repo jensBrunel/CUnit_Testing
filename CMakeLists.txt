@@ -9,10 +9,23 @@ include(CTest)
 # Added for External Projects
 include(ExternalProject)
 
+SET(CMAKE_C_FLAGS "-g -O0 -Wall -W -fprofile-arcs -ftest-coverage")
+SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
+
 ################################################################
 # Set Module Path
 ################################################################
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+
+include(CodeCoverage)
+
+ SETUP_TARGET_FOR_COVERAGE(
+   			    coverage  # Name for custom target.
+			    UnitTesting         # Name of the test driver executable that runs the tests.
+    					# NOTE! This should always have a ZERO as exit code
+									# otherwise the coverage generation will not complete.
+     			    coverage            # Name of output directory.
+)
 
 ################################################################
 # External: CUNIT
@@ -31,6 +44,8 @@ LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CUNIT_LIBRARY_PATH})
 
 add_subdirectory(DUT)
 add_subdirectory(testcases)
+
+add_test(UnitTesting ${EXECUTABLE_OUTPUT_PATH}/UnitTesting)
 
 add_executable(UnitTesting main.c)
 target_link_libraries(UnitTesting DUT testcases libcunit.a)
