@@ -7,6 +7,16 @@ void simpleTest(void) {
         CU_ASSERT(2 == funca(2));
 }
 
+void simpleTest2(void) {
+
+        CU_ASSERT(2 == funca(3));
+}
+
+void simpleTest3(void) {
+
+        CU_ASSERT(1 == funca(1));
+}
+
 void setTestCases()
 {
        CU_pSuite pSuite = NULL;
@@ -24,6 +34,16 @@ void setTestCases()
 
 	   /* add the tests to the suite */
 	   if (NULL == CU_add_test(pSuite, "Simple Addition Test", simpleTest)) {
+	      CU_cleanup_registry();
+	      return CU_get_error();
+	   }
+
+	   if (NULL == CU_add_test(pSuite, "Simple Addition Test 2", simpleTest2)) {
+	      CU_cleanup_registry();
+	      return CU_get_error();
+	   }
+
+	   if (NULL == CU_add_test(pSuite, "Simple Addition Test 3", simpleTest3)) {
 	      CU_cleanup_registry();
 	      return CU_get_error();
 	   }
