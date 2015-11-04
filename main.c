@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "dut.h"
 #include "testcases.h"
-#include "CUnit/Basic.h"
+#include "Basic.h"
 
 int main( int argc, const char* argv[] )
 {

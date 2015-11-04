@@ -1,1 +1,1 @@
-add_library(DUT SHARED dut.c)
+add_library(DUT STATIC dut.c)

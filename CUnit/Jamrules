@@ -30,7 +30,7 @@ if $(OS) = LINUX || $(UNIX)
   VERSION_MINOR = 1 ;
   
   # root of install path
-  prefix = /home/jens/workspace/CUnit_Testing/CUnit ;
+  prefix = /cygdrive/d/Projekte/CUnit_Testing/CUnit ;
 
   # choice of interfaces to build into library
   if TRUE = TRUE

@@ -45,4 +45,6 @@ add_subdirectory(testcases)
 add_test(UnitTesting ${EXECUTABLE_OUTPUT_PATH}/UnitTesting)
 
 add_executable(UnitTesting main.c)
+add_dependencies(UnitTesting cunit DUT testcases)
+
 target_link_libraries(UnitTesting DUT testcases libcunit.a gcov)

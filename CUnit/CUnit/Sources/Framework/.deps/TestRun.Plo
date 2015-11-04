@@ -1,112 +1,130 @@
-TestRun.lo: TestRun.c /usr/include/stdc-predef.h /usr/include/stdlib.h \
- /usr/include/features.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
- /usr/include/x86_64-linux-gnu/bits/wordsize.h \
- /usr/include/x86_64-linux-gnu/gnu/stubs.h \
- /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/string.h \
+TestRun.lo: TestRun.c /usr/include/stdlib.h /usr/include/machine/ieeefp.h \
+ /usr/include/_ansi.h /usr/include/newlib.h /usr/include/sys/config.h \
+ /usr/include/sys/features.h /usr/include/cygwin/config.h \
+ /usr/lib/gcc/i686-pc-cygwin/4.5.3/include/stddef.h \
+ /usr/include/sys/reent.h /usr/include/_ansi.h /usr/include/sys/_types.h \
+ /usr/include/machine/_types.h /usr/include/machine/_default_types.h \
+ /usr/include/sys/lock.h /usr/include/machine/stdlib.h \
+ /usr/include/cygwin/stdlib.h /usr/include/cygwin/wait.h \
+ /usr/include/string.h /usr/include/sys/cdefs.h \
+ /usr/lib/gcc/i686-pc-cygwin/4.5.3/include/stdint.h /usr/include/stdint.h \
+ /usr/include/bits/wordsize.h /usr/include/sys/string.h \
  /usr/include/assert.h /usr/include/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/types.h \
- /usr/include/x86_64-linux-gnu/bits/typesizes.h /usr/include/libio.h \
- /usr/include/_G_config.h /usr/include/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h \
- /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /usr/include/x86_64-linux-gnu/bits/sys_errlist.h /usr/include/setjmp.h \
- /usr/include/x86_64-linux-gnu/bits/setjmp.h \
- /usr/include/x86_64-linux-gnu/bits/sigset.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h \
- /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/huge_val.h \
- /usr/include/x86_64-linux-gnu/bits/mathdef.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/CUError.h \
- /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/MyMem.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h \
- /home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h
-
-/usr/include/stdc-predef.h:
+ /usr/lib/gcc/i686-pc-cygwin/4.5.3/include/stdarg.h \
+ /usr/include/sys/types.h /usr/include/machine/types.h \
+ /usr/include/cygwin/types.h /usr/include/endian.h \
+ /usr/include/bits/endian.h /usr/include/byteswap.h \
+ /usr/include/sys/sysmacros.h /usr/include/sys/stdio.h \
+ /usr/include/setjmp.h /usr/include/machine/setjmp.h \
+ /usr/include/signal.h /usr/include/sys/signal.h \
+ /usr/include/cygwin/signal.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h \
+ /usr/include/math.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/CUError.h \
+ /usr/include/errno.h /usr/include/sys/errno.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/MyMem.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h \
+ /cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h
 
 /usr/include/stdlib.h:
 
-/usr/include/features.h:
+/usr/include/machine/ieeefp.h:
 
-/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+/usr/include/_ansi.h:
 
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+/usr/include/newlib.h:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+/usr/include/sys/config.h:
 
-/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+/usr/include/sys/features.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h:
+/usr/include/cygwin/config.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
+/usr/lib/gcc/i686-pc-cygwin/4.5.3/include/stddef.h:
+
+/usr/include/sys/reent.h:
+
+/usr/include/_ansi.h:
+
+/usr/include/sys/_types.h:
+
+/usr/include/machine/_types.h:
+
+/usr/include/machine/_default_types.h:
+
+/usr/include/sys/lock.h:
+
+/usr/include/machine/stdlib.h:
+
+/usr/include/cygwin/stdlib.h:
+
+/usr/include/cygwin/wait.h:
 
 /usr/include/string.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/lib/gcc/i686-pc-cygwin/4.5.3/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/sys/string.h:
 
 /usr/include/assert.h:
 
 /usr/include/stdio.h:
 
-/usr/include/x86_64-linux-gnu/bits/types.h:
+/usr/lib/gcc/i686-pc-cygwin/4.5.3/include/stdarg.h:
 
-/usr/include/x86_64-linux-gnu/bits/typesizes.h:
+/usr/include/sys/types.h:
 
-/usr/include/libio.h:
+/usr/include/machine/types.h:
 
-/usr/include/_G_config.h:
+/usr/include/cygwin/types.h:
 
-/usr/include/wchar.h:
+/usr/include/endian.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h:
+/usr/include/bits/endian.h:
 
-/usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
+/usr/include/byteswap.h:
 
-/usr/include/x86_64-linux-gnu/bits/sys_errlist.h:
+/usr/include/sys/sysmacros.h:
+
+/usr/include/sys/stdio.h:
 
 /usr/include/setjmp.h:
 
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+/usr/include/machine/setjmp.h:
 
-/usr/include/x86_64-linux-gnu/bits/sigset.h:
+/usr/include/signal.h:
 
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h:
+/usr/include/sys/signal.h:
+
+/usr/include/cygwin/signal.h:
+
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h:
 
 /usr/include/math.h:
 
-/usr/include/x86_64-linux-gnu/bits/huge_val.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathdef.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/CUError.h:
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/CUError.h:
 
 /usr/include/errno.h:
 
-/usr/include/x86_64-linux-gnu/bits/errno.h:
+/usr/include/sys/errno.h:
 
-/usr/include/linux/errno.h:
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h:
 
-/usr/include/x86_64-linux-gnu/asm/errno.h:
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h:
 
-/usr/include/asm-generic/errno.h:
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h:
 
-/usr/include/asm-generic/errno-base.h:
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/MyMem.h:
 
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/CUnit.h:
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h:
 
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h:
-
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h:
-
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/MyMem.h:
-
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestDB.h:
-
-/home/jens/workspace/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h:
+/cygdrive/d/Projekte/CUnit_Testing/CUnit/CUnit/Headers/TestRun.h:

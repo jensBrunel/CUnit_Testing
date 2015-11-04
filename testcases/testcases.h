@@ -8,7 +8,7 @@
 #ifndef TESTCASES_TESTCASES_H_
 #define TESTCASES_TESTCASES_H_
 
-#include "CUnit/Basic.h"
+#include "Basic.h"
 
 extern void setTestCases();
 
