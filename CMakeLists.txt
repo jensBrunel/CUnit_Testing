@@ -34,6 +34,16 @@ ExternalProject_Add(cunit
     INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make install 
 )
 
+################################################################
+# External: lcov
+################################################################
+ExternalProject_Add(lcov
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lcov
+    CONFIGURE_COMMAND cd .
+    BUILD_COMMAND cd .
+    INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/lcov/ && make install 
+)
+
 set(CUNIT_LIBRARY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/lib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/CUnit/Headers ${CMAKE_CURRENT_SOURCE_DIR}/DUT ${CMAKE_CURRENT_SOURCE_DIR}/testcases)
@@ -45,6 +55,6 @@ add_subdirectory(testcases)
 add_test(UnitTesting ${EXECUTABLE_OUTPUT_PATH}/UnitTesting)
 
 add_executable(UnitTesting main.c)
-add_dependencies(UnitTesting cunit DUT testcases)
+add_dependencies(UnitTesting locv cunit DUT testcases)
 
 target_link_libraries(UnitTesting DUT testcases libcunit.a gcov)
