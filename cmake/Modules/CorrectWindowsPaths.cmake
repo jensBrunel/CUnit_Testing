@@ -4,11 +4,12 @@
 #  This uses the command cygpath (provided by cygwin) to convert
 #  unix-style paths into paths useable by cmake on windows
 
-macro (CONVERT_CYGWIN_PATH _path)
-  if (WIN32)
-    EXECUTE_PROCESS(COMMAND cygpath.exe -m ${${_path}}
-      OUTPUT_VARIABLE ${_path})
-    string (STRIP ${${_path}} ${_path})
-  endif (WIN32)
+macro (CONVERT_CYGWIN_PATH placeholder path)
+    EXECUTE_PROCESS(COMMAND cygpath.exe -w ${path}
+      OUTPUT_VARIABLE newpath)
+	  string(STRIP ${newpath} newpath)
+	  message(newpath=${newpath})
+	  set(retVal ${newpath}) 
+	  message(retVal=${retVal} )
 endmacro (CONVERT_CYGWIN_PATH)
 

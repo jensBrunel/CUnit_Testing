@@ -9,8 +9,8 @@ include(CTest)
 # Added for External Projects
 include(ExternalProject)
 
-SET(CMAKE_C_FLAGS "-g -O0 -Wall -W --coverage")
-SET(CMAKE_CXX_FLAGS "-g -O0 --coverage"
+SET(CMAKE_C_FLAGS "-g -Wall -W --coverage")
+SET(CMAKE_CXX_FLAGS "-g --coverage"
     CACHE STRING "Flags used by the C++ compiler during coverage builds."
     FORCE )
 SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
@@ -21,15 +21,18 @@ SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 include(CodeCoverage)
+include(FindLint)
+include(CorrectWindowsPaths)
 
 SETUP_TARGET_FOR_COVERAGE(coverage UnitTesting coverage)
+lint_check_sources(lint gcc g++ ${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS} ${CMAKE_CURRENT_SOURCE_DIR}/DUT/dut.c ${CMAKE_CURRENT_SOURCE_DIR}/DUT/dut2.c)
 
 ################################################################
 # External: CUNIT
 ################################################################
 ExternalProject_Add(cunit
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CUnit
-    CONFIGURE_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && autoreconf --install && ./configure --prefix=${CMAKE_CURRENT_SOURCE_DIR}/CUnit
+    CONFIGURE_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && autoreconf --install && ./configure
     BUILD_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make #Build command
     INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make install 
 )
@@ -41,7 +44,7 @@ ExternalProject_Add(lcov
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lcov
     CONFIGURE_COMMAND cd .
     BUILD_COMMAND cd .
-    INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/lcov/ && make install 
+    INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/lcov/ && make install
 )
 
 set(CUNIT_LIBRARY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/lib)
@@ -55,6 +58,6 @@ add_subdirectory(testcases)
 add_test(UnitTesting ${EXECUTABLE_OUTPUT_PATH}/UnitTesting)
 
 add_executable(UnitTesting main.c)
-add_dependencies(UnitTesting locv cunit DUT testcases)
+add_dependencies(UnitTesting locv cunit DUT testcases lint)
 
 target_link_libraries(UnitTesting DUT testcases libcunit.a gcov)
