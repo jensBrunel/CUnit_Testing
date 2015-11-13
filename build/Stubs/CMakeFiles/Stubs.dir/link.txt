@@ -1,0 +1,2 @@
+/usr/bin/ar.exe cr libStubs.a  CMakeFiles/Stubs.dir/Stubs.c.o
+/usr/bin/ranlib.exe libStubs.a
