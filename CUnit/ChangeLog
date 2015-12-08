@@ -1,3 +1,41 @@
+* Wed Apr 23 2014 Anil Kumar <anilsaharan@users.sourceforge.net>
+  - Ability to build with a non-source directory build root
+  - Fixed files included in the download source file
+
+* Tue Oct 14 2010 Martin Gerhardy <tlh2000@users.sourceforge.net>
+  - release 2.1.1
+
+* Wed Oct 13 2010 Martin Gerhardy <tlh2000@users.sourceforge.net>
+  - fixed bug #2976958
+  - fixed other const related warnings
+
+* Wed May 10 2006 Jerry St.Clair <jds2@users.sourceforge.net>
+  - modified dtd and xsl files to support inactive suites/tests.
+  - instrumented entire framework/interfaces for gettext
+    (not activated yet, just instrumented source).
+
+* Sun Apr 30 2006 Jerry St.Clair <jds2@users.sourceforge.net>
+  - Added ability to deactivate suite/tests dynamically.
+  - Removed constraint that suite/test names be unique.
+  - Added lookup functions to TestDB.[ch]
+  - Changed test run behavior so suite is run even if it has
+    no tests - user may expect init & cleanup functions to
+    be run as long as suite is active.
+  - Modified console:  suites/tests selected by number, 
+    inactive tests/suites reported, added help function,
+    added option menu.
+  - Modified curses:  suites/tests selected by number, 
+    inactive tests/suites reported, added help function,
+    added option menu.
+  - Modified automated:  inactive suites/tests reported.
+  - Modified docs and internal unit tests for these changes.
+  - Moved doxygen comments for public functions to headers.
+    This will make them more accessible to clients without
+    having to generate doxygen docs.
+
+* Wed Mar 22 2006 Jerry St.Clair <jds2@users.sourceforge.net>
+  - release 2.1.0
+
 * Sat Mar 17 2006 Jerry St.Clair <jds2@users.sourceforge.net>
   - Finalized upgrade of configure.in, Makefile.am.
   - Upgraded Jamfile set to build shared library on Linux.

@@ -1,8 +1,8 @@
 Summary:  A unit testing framework for 'C'
 Name:     CUnit
 Version:  2.1
-Release:  0
-Source:   http://www.sourceforge.net/projects/cunit/CUnit-2.1-0.tar.gz
+Release:  3
+Source:   http://www.sourceforge.net/projects/cunit/CUnit-2.1-3.tar.gz
 Group:    Development/Tools
 License:  GPL
 URL:      http://cunit.sourceforge.net
@@ -15,7 +15,7 @@ headers, and documentation files.
 
 %prep
 echo "Preparing for Installation."
-%setup -q -n CUnit-2.1-0
+%setup -q -n CUnit-2.1-3
 
 %build
 echo "Preparing for Building."
@@ -37,6 +37,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %{_prefix}/include/CUnit/Console.h
 %{_prefix}/include/CUnit/CUError.h
 %{_prefix}/include/CUnit/CUnit.h
+%{_prefix}/include/CUnit/CUnit_intl.h
 %{_prefix}/include/CUnit/CUCurses.h
 %{_prefix}/include/CUnit/MyMem.h
 %{_prefix}/include/CUnit/TestDB.h
@@ -62,12 +63,13 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %{_prefix}/doc/CUnit/headers/Console.h
 %{_prefix}/doc/CUnit/headers/CUError.h
 %{_prefix}/doc/CUnit/headers/CUnit.h
+%{_prefix}/doc/CUnit/headers/CUnit_intl.h
 %{_prefix}/doc/CUnit/headers/CUCurses.h
 %{_prefix}/doc/CUnit/headers/MyMem.h
 %{_prefix}/doc/CUnit/headers/TestDB.h
 %{_prefix}/doc/CUnit/headers/TestRun.h
 %{_prefix}/doc/CUnit/headers/Util.h
-%{_prefix}/doc/CUnit/headers/Win.h            
+%{_prefix}/doc/CUnit/headers/Win.h
 
 ########## Manpage Files
 %{_prefix}/man/man3/CUnit.3*
