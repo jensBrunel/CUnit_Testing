@@ -9,7 +9,9 @@ include(CTest)
 # Added for External Projects
 include(ExternalProject)
 
-SET(CMAKE_C_FLAGS "-g -Wall -W --coverage")
+add_definitions(-DMODULE_TEST)
+
+SET(CMAKE_C_FLAGS "-g -Wall -W -pedantic --coverage")
 SET(CMAKE_CXX_FLAGS "-g --coverage"
     CACHE STRING "Flags used by the C++ compiler during coverage builds."
     FORCE )
@@ -25,7 +27,20 @@ include(FindLint)
 include(CorrectWindowsPaths)
 
 SETUP_TARGET_FOR_COVERAGE(coverage UnitTesting coverage)
-lint_check_sources(lint gcc g++ ${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS} ${CMAKE_CURRENT_SOURCE_DIR}/DUT/dut.c ${CMAKE_CURRENT_SOURCE_DIR}/DUT/dut2.c)
+
+SET (SRCS ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_rom_test_configuration.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_callback.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_lockstep_test.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_mpu_test.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_mpu_test_configuration.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_register_safeguard.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_register_safeguard_configuration.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_rom_test.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_scheduler.c
+ ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_time_safeguard.c
+)
+
+lint_check_sources(lint gcc g++ ${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS} ${SRCS})
 
 ################################################################
 # External: CUNIT
@@ -47,17 +62,18 @@ ExternalProject_Add(lcov
     INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/lcov/ && make install
 )
 
-set(CUNIT_LIBRARY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/lib)
+set(CUNIT_LIBRARY_PATH /usr/local/lib/)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/CUnit/Headers ${CMAKE_CURRENT_SOURCE_DIR}/DUT ${CMAKE_CURRENT_SOURCE_DIR}/testcases)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} /usr/local/include/CUnit/ ${CMAKE_CURRENT_SOURCE_DIR}/DUT ${CMAKE_CURRENT_SOURCE_DIR}/testcases)
 LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CUNIT_LIBRARY_PATH})
 
+add_subdirectory(Stubs)
 add_subdirectory(DUT)
 add_subdirectory(testcases)
 
 add_test(UnitTesting ${EXECUTABLE_OUTPUT_PATH}/UnitTesting)
 
 add_executable(UnitTesting main.c)
-add_dependencies(UnitTesting locv cunit DUT testcases lint)
+add_dependencies(UnitTesting locv cunit Stubs DUT testcases lint)
 
-target_link_libraries(UnitTesting DUT testcases libcunit.a gcov)
+target_link_libraries(UnitTesting Stubs DUT testcases libcunit.a gcov)
