@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "testcases.h"
+#include "Basic.h"
 #include "dut.h"
 
 void simpleTest(void) {
