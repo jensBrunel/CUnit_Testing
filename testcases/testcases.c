@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "testcases.h"
-#include "Basic.h"
 #include "dut.h"
 
 void simpleTest(void) {
@@ -18,7 +17,7 @@ void simpleTest3(void) {
         CU_ASSERT(1 == funca(1));
 }
 
-void setTestCases()
+CU_ErrorCode setTestCases()
 {
        CU_pSuite pSuite = NULL;
 

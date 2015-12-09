@@ -1,7 +1,8 @@
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR} /usr/include/CUnit/ ${CMAKE_SOURCE_DIR}/DUT ${CMAKE_SOURCE_DIR}/Stubs)
+include(${PROJECT_SOURCE_DIR}/testcases_sources.cmake) 
+
 LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/DUT ${CMAKE_SOURCE_DIR}/Stubs)
 
 add_definitions(-DMODULE_TEST)
 
-add_library(testcases STATIC testcases.c )
+add_library(testcases STATIC ${TEST_SOURCES} )
 target_link_libraries(testcases DUT)
