@@ -1,4 +1,3 @@
-include_directories(${CMAKE_SOURCE_DIR}/Stubs)
 LINK_DIRECTORIES(${CMAKE_SOURCE_DIR}/Stubs)
 
 add_definitions(-DMODULE_TEST)

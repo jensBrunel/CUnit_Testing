@@ -23,25 +23,16 @@ SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 include(CodeCoverage)
-include(FindLint)
+#include(FindLint)
 include(CorrectWindowsPaths)
 
 SETUP_TARGET_FOR_COVERAGE(coverage UnitTesting coverage)
 
-SET (SRCS ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_rom_test_configuration.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_callback.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_lockstep_test.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_mpu_test.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_mpu_test_configuration.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_register_safeguard.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_register_safeguard_configuration.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_rom_test.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_scheduler.c
- ${CMAKE_CURRENT_SOURCE_DIR}/DUT/sl_time_safeguard.c
-)
+find_library(CUNIT_PATH NAMES libcunit.a PATHS /usr/lib /usr/local/lib)
 
-lint_check_sources(lint gcc g++ ${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS} ${SRCS})
-
+if(CUNIT_PATH)
+set(CUNIT_LIBRARY_PATH $CUNIT_PATH)
+else(CUNIT_PATH)
 ################################################################
 # External: CUNIT
 ################################################################
@@ -51,7 +42,14 @@ ExternalProject_Add(cunit
     BUILD_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make #Build command
     INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make install 
 )
+set(CUNIT_LIBRARY_PATH /usr/local/lib/)
+endif(CUNIT_PATH)
 
+find_program(LCOV_PATH NAMES lcov PATHS /usr/bin /usr/local/bin)
+
+if(LCOV_PATH)
+
+else(LCOV_PATH)
 ################################################################
 # External: lcov
 ################################################################
@@ -61,10 +59,9 @@ ExternalProject_Add(lcov
     BUILD_COMMAND cd .
     INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/lcov/ && make install
 )
+endif(LCOV_PATH)
 
-set(CUNIT_LIBRARY_PATH /usr/local/lib/)
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} /usr/local/include/CUnit/ ${CMAKE_CURRENT_SOURCE_DIR}/DUT ${CMAKE_CURRENT_SOURCE_DIR}/testcases)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} /usr/include/CUnit/ ${CMAKE_CURRENT_SOURCE_DIR}/DUT ${CMAKE_CURRENT_SOURCE_DIR}/testcases ${CMAKE_SOURCE_DIR}/Stubs)
 LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CUNIT_LIBRARY_PATH})
 
 add_subdirectory(Stubs)
