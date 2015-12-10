@@ -71,7 +71,8 @@
 FIND_PROGRAM( GCOV_PATH gcov )
 FIND_PROGRAM( LCOV_PATH lcov )
 FIND_PROGRAM( GENHTML_PATH genhtml )
-FIND_PROGRAM( GCOVR_PATH gcovr PATHS ${CMAKE_SOURCE_DIR}/tests)
+FIND_PROGRAM( GCOVR_PATH gcovr )
+FIND_PROGRAM( PYTHON_EXECUTABLE python3 )
 
 IF(NOT GCOV_PATH)
 	MESSAGE(FATAL_ERROR "gcov not found! Aborting...")
@@ -161,10 +162,10 @@ FUNCTION(SETUP_TARGET_FOR_COVERAGE_COBERTURA _targetname _testrunner _outputname
 	ADD_CUSTOM_TARGET(${_targetname}
 
 		# Run tests
-		${_testrunner} ${ARGV3}
+		COMMAND ${_testrunner} ${ARGV3}
 
 		# Running gcovr
-		COMMAND ${GCOVR_PATH} -x -r ${CMAKE_SOURCE_DIR} -e '${CMAKE_SOURCE_DIR}/tests/'  -o ${_outputname}.xml
+		COMMAND ${GCOVR_PATH} -r ./DUT --html -o ${_outputname}.html
 		WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 		COMMENT "Running gcovr to produce Cobertura code coverage report."
 	)
@@ -172,7 +173,7 @@ FUNCTION(SETUP_TARGET_FOR_COVERAGE_COBERTURA _targetname _testrunner _outputname
 	# Show info where to find the report
 	ADD_CUSTOM_COMMAND(TARGET ${_targetname} POST_BUILD
 		COMMAND ;
-		COMMENT "Cobertura code coverage report saved in ${_outputname}.xml."
+		COMMENT "Cobertura code coverage report saved in ${_outputname}.html."
 	)
 
 ENDFUNCTION() # SETUP_TARGET_FOR_COVERAGE_COBERTURA

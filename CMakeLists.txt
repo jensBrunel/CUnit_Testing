@@ -27,6 +27,8 @@ include(CorrectWindowsPaths)
 
 SETUP_TARGET_FOR_COVERAGE(coverage UnitTesting coverage)
 
+SETUP_TARGET_FOR_COVERAGE_COBERTURA(cobertura UnitTesting cobertura)
+
 find_library(CUNIT_PATH NAMES libcunit.a PATHS /usr/lib /usr/local/lib)
 find_path(CUNIT_INCLUDE_PATH NAMES CUnit.h PATHS /usr/include/CUnit /usr/local/include/CUnit)
 

@@ -47,4 +47,6 @@ CU_ErrorCode setTestCases()
 	      CU_cleanup_registry();
 	      return CU_get_error();
 	   }
+     return CUE_SUCCESS;
 }
+
