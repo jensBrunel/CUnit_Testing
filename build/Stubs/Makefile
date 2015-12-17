@@ -30,22 +30,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake.exe
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake.exe -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake.exe
+CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/d/Projekte/CUnit_Testing
+CMAKE_SOURCE_DIR = /home/jens/workspace/CUnit_Testing
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/d/Projekte/CUnit_Testing/build
+CMAKE_BINARY_DIR = /home/jens/workspace/CUnit_Testing/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -53,7 +53,7 @@ CMAKE_BINARY_DIR = /cygdrive/d/Projekte/CUnit_Testing/build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -63,7 +63,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -73,7 +73,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest.exe --force-new-ctest-process $(ARGS)
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
 .PHONY : test
 
 # Special rule for the target test
@@ -82,14 +82,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/Projekte/CUnit_Testing/build/CMakeFiles /cygdrive/d/Projekte/CUnit_Testing/build/Stubs/CMakeFiles/progress.marks
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/d/Projekte/CUnit_Testing/build/CMakeFiles 0
+	cd /home/jens/workspace/CUnit_Testing/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jens/workspace/CUnit_Testing/build/CMakeFiles /home/jens/workspace/CUnit_Testing/build/Stubs/CMakeFiles/progress.marks
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jens/workspace/CUnit_Testing/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/clean
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/clean
 .PHONY : clean
 
 # The main clean target
@@ -98,22 +98,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/preinstall
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/preinstall
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/jens/workspace/CUnit_Testing/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Stubs/CMakeFiles/Stubs.dir/rule:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/CMakeFiles/Stubs.dir/rule
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f CMakeFiles/Makefile2 Stubs/CMakeFiles/Stubs.dir/rule
 .PHONY : Stubs/CMakeFiles/Stubs.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ Stubs: Stubs/CMakeFiles/Stubs.dir/rule
 
 # fast build rule for target.
 Stubs/fast:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/build
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/build
 .PHONY : Stubs/fast
 
 Stubs.o: Stubs.c.o
@@ -130,7 +130,7 @@ Stubs.o: Stubs.c.o
 
 # target to build an object file
 Stubs.c.o:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/Stubs.c.o
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/Stubs.c.o
 .PHONY : Stubs.c.o
 
 Stubs.i: Stubs.c.i
@@ -138,7 +138,7 @@ Stubs.i: Stubs.c.i
 
 # target to preprocess a source file
 Stubs.c.i:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/Stubs.c.i
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/Stubs.c.i
 .PHONY : Stubs.c.i
 
 Stubs.s: Stubs.c.s
@@ -146,7 +146,7 @@ Stubs.s: Stubs.c.s
 
 # target to generate assembly for a file
 Stubs.c.s:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/Stubs.c.s
+	cd /home/jens/workspace/CUnit_Testing/build && $(MAKE) -f Stubs/CMakeFiles/Stubs.dir/build.make Stubs/CMakeFiles/Stubs.dir/Stubs.c.s
 .PHONY : Stubs.c.s
 
 # Help Target
@@ -173,6 +173,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /cygdrive/d/Projekte/CUnit_Testing/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/jens/workspace/CUnit_Testing/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

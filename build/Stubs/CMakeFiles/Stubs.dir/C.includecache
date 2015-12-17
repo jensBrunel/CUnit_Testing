@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/d/Projekte/CUnit_Testing/Stubs/Stubs.c
+/home/jens/workspace/CUnit_Testing/Stubs/Stubs.c
 stdint.h
 -
 Stubs.h
-/cygdrive/d/Projekte/CUnit_Testing/Stubs/Stubs.h
+/home/jens/workspace/CUnit_Testing/Stubs/Stubs.h
 stdio.h
 -
 stdlib.h
 -
 
-/cygdrive/d/Projekte/CUnit_Testing/Stubs/Stubs.h
+/home/jens/workspace/CUnit_Testing/Stubs/Stubs.h
 stdbool.h
 -
 stdint.h

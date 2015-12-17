@@ -13,11 +13,11 @@ include(wrap_functions.cmake)
 
 add_definitions(-DMODULE_TEST)
 
-SET(CMAKE_C_FLAGS "-g -Wall -W -pedantic --coverage  -Wl,-wrap,${wrap_functions} ")
+SET(CMAKE_C_FLAGS "-g -Wall -W -pedantic --coverage")
 SET(CMAKE_CXX_FLAGS "-g --coverage"
     CACHE STRING "Flags used by the C++ compiler during coverage builds."
     FORCE )
-SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
+SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage ${WRAP_FUNCTIONS}")
 
 ################################################################
 # Set Module Path

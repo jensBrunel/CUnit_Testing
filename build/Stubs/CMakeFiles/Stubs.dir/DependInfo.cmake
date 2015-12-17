@@ -4,13 +4,12 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/cygdrive/d/Projekte/CUnit_Testing/Stubs/Stubs.c" "/cygdrive/d/Projekte/CUnit_Testing/build/Stubs/CMakeFiles/Stubs.dir/Stubs.c.o"
+  "/home/jens/workspace/CUnit_Testing/Stubs/Stubs.c" "/home/jens/workspace/CUnit_Testing/build/Stubs/CMakeFiles/Stubs.dir/Stubs.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 SET(CMAKE_TARGET_DEFINITIONS
-  "MODULE_TEST"
   "MODULE_TEST"
   )
 
@@ -21,7 +20,7 @@ SET(CMAKE_TARGET_LINKED_INFO_FILES
 # The include file search paths:
 SET(CMAKE_C_TARGET_INCLUDE_PATH
   ".."
-  "/usr/local/include/CUnit"
+  "/usr/include/CUnit"
   "../DUT"
   "../testcases"
   "../Stubs"
