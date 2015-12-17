@@ -33,7 +33,8 @@ find_library(CUNIT_PATH NAMES libcunit.a PATHS /usr/lib /usr/local/lib)
 find_path(CUNIT_INCLUDE_PATH NAMES CUnit.h PATHS /usr/include/CUnit /usr/local/include/CUnit)
 
 if(CUNIT_PATH)
-set(CUNIT_LIBRARY_PATH $CUNIT_PATH)
+get_filename_component(CUNIT_LIBRARY_PATH ${CUNIT_PATH} PATH)
+message(CUNIT_LIBRARY_PATH: ${CUNIT_LIBRARY_PATH})
 else(CUNIT_PATH)
 ################################################################
 # External: CUNIT
