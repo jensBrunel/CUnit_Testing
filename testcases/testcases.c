@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "testcases.h"
 #include "dut.h"
+#include "dut2.h"
+#include <stdlib.h>
 
 void simpleTest(void) {
 
@@ -15,6 +17,10 @@ void simpleTest2(void) {
 void simpleTest3(void) {
 
         CU_ASSERT(1 == funca(1));
+}
+
+void simpleTest4(void) {
+     CU_ASSERT(10 == funcb(10));
 }
 
 CU_ErrorCode setTestCases()
@@ -44,6 +50,11 @@ CU_ErrorCode setTestCases()
 	   }
 
 	   if (NULL == CU_add_test(pSuite, "Simple Addition Test 3", simpleTest3)) {
+	      CU_cleanup_registry();
+	      return CU_get_error();
+	   }
+	   
+       if (NULL == CU_add_test(pSuite, "Simple Addition Test 4", simpleTest4)) {
 	      CU_cleanup_registry();
 	      return CU_get_error();
 	   }

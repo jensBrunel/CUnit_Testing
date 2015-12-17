@@ -9,9 +9,11 @@ include(CTest)
 # Added for External Projects
 include(ExternalProject)
 
+include(wrap_functions.cmake)
+
 add_definitions(-DMODULE_TEST)
 
-SET(CMAKE_C_FLAGS "-g -Wall -W -pedantic --coverage")
+SET(CMAKE_C_FLAGS "-g -Wall -W -pedantic --coverage  -Wl,-wrap,${wrap_functions} ")
 SET(CMAKE_CXX_FLAGS "-g --coverage"
     CACHE STRING "Flags used by the C++ compiler during coverage builds."
     FORCE )
@@ -26,8 +28,6 @@ include(CodeCoverage)
 include(CorrectWindowsPaths)
 
 SETUP_TARGET_FOR_COVERAGE(coverage UnitTesting coverage)
-
-SETUP_TARGET_FOR_COVERAGE_COBERTURA(cobertura UnitTesting cobertura)
 
 find_library(CUNIT_PATH NAMES libcunit.a PATHS /usr/lib /usr/local/lib)
 find_path(CUNIT_INCLUDE_PATH NAMES CUnit.h PATHS /usr/include/CUnit /usr/local/include/CUnit)

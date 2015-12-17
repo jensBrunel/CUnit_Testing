@@ -3,5 +3,7 @@
 
 int funcb(int b)
 {
+    malloc(b);
+	free(b);
 	return b;
 }
