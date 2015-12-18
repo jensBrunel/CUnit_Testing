@@ -24,36 +24,12 @@ SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage ${WRAP_FUNCTIONS}")
 ################################################################
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
-include(CodeCoverage)
-include(CorrectWindowsPaths)
-
-SETUP_TARGET_FOR_COVERAGE(coverage UnitTesting coverage)
-
-find_library(CUNIT_PATH NAMES libcunit.a PATHS /usr/lib /usr/local/lib)
-find_path(CUNIT_INCLUDE_PATH NAMES CUnit.h PATHS /usr/include/CUnit /usr/local/include/CUnit)
-
-if(CUNIT_PATH)
-get_filename_component(CUNIT_LIBRARY_PATH ${CUNIT_PATH} PATH)
-message(CUNIT_LIBRARY_PATH: ${CUNIT_LIBRARY_PATH})
-else(CUNIT_PATH)
-################################################################
-# External: CUNIT
-################################################################
-set(CUNIT_LIBRARY_PATH /usr/local/lib/)
-ExternalProject_Add(cunit
-    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CUnit
-    CONFIGURE_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && autoreconf --install && ./configure --prefix=${CUNIT_LIBRARY_PATH}
-    BUILD_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make #Build command
-    INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make install 
-)
-
-endif(CUNIT_PATH)
-
 find_program(LCOV_PATH NAMES lcov PATHS /usr/bin /usr/local/bin)
 
-#if(LCOV_PATH)
+if(LCOV_PATH)
 
-#else(LCOV_PATH)
+else(LCOV_PATH)
+set(LCOV_PATH /usr/bin)
 ################################################################
 # External: lcov
 ################################################################
@@ -63,7 +39,33 @@ ExternalProject_Add(lcov
     BUILD_COMMAND cd .
     INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/lcov/ && make install
 )
-#endif(LCOV_PATH)
+endif(LCOV_PATH)
+
+find_library(CUNIT_PATH NAMES libcunit.a PATHS /usr/lib /usr/local/lib)
+find_path(CUNIT_INCLUDE_PATH NAMES CUnit.h PATHS /usr/include/CUnit /usr/local/include/CUnit)
+
+if(CUNIT_PATH AND CUNIT_INCLUDE_PATH)
+get_filename_component(CUNIT_LIBRARY_PATH ${CUNIT_PATH} PATH)
+message(CUNIT_LIBRARY_PATH: ${CUNIT_LIBRARY_PATH})
+else(CUNIT_PATH AND CUNIT_INCLUDE_PATH)
+################################################################
+# External: CUNIT
+################################################################
+set(CUNIT_LIBRARY_PATH /usr/local/)
+set(CUNIT_INCLUDE_PATH ${CUNIT_LIBRARY_PATH}usr/local/)
+ExternalProject_Add(cunit
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CUnit
+    CONFIGURE_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && autoreconf --install && ./configure --prefix=${CUNIT_LIBRARY_PATH}
+    BUILD_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make #Build command
+    INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/CUnit/ && make install 
+)
+
+endif(CUNIT_PATH AND CUNIT_INCLUDE_PATH)
+
+include(CodeCoverage)
+include(CorrectWindowsPaths)
+
+SETUP_TARGET_FOR_COVERAGE(coverage UnitTesting coverage)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CUNIT_INCLUDE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/DUT ${CMAKE_CURRENT_SOURCE_DIR}/testcases ${CMAKE_SOURCE_DIR}/Stubs)
 LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CUNIT_LIBRARY_PATH})

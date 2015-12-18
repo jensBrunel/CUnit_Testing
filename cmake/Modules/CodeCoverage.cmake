@@ -109,13 +109,13 @@ MARK_AS_ADVANCED(
 # Optional fourth parameter is passed as arguments to _testrunner
 #   Pass them in list form, e.g.: "-j;2" for -j 2
 FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _testrunner _outputname)
-	IF(NOT LCOV_PATH)
-		MESSAGE(FATAL_ERROR "lcov not found! Aborting...")
-	ENDIF() # NOT LCOV_PATH
+#	IF(NOT LCOV_PATH)
+#		MESSAGE(FATAL_ERROR "lcov not found! Aborting...")
+#	ENDIF() # NOT LCOV_PATH
 
-	IF(NOT GENHTML_PATH)
-		MESSAGE(FATAL_ERROR "genhtml not found! Aborting...")
-	ENDIF() # NOT GENHTML_PATH
+#	IF(NOT GENHTML_PATH)
+#		MESSAGE(FATAL_ERROR "genhtml not found! Aborting...")
+#	ENDIF() # NOT GENHTML_PATH
 
 	# Setup target
 	ADD_CUSTOM_TARGET(${_targetname}

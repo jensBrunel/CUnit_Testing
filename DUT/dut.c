@@ -3,5 +3,6 @@
 
 int funca(int a)
 {
+
 	return a;
 }
