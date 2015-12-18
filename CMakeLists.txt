@@ -51,9 +51,9 @@ endif(CUNIT_PATH)
 
 find_program(LCOV_PATH NAMES lcov PATHS /usr/bin /usr/local/bin)
 
-if(LCOV_PATH)
+#if(LCOV_PATH)
 
-else(LCOV_PATH)
+#else(LCOV_PATH)
 ################################################################
 # External: lcov
 ################################################################
@@ -63,7 +63,7 @@ ExternalProject_Add(lcov
     BUILD_COMMAND cd .
     INSTALL_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/lcov/ && make install
 )
-endif(LCOV_PATH)
+#endif(LCOV_PATH)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CUNIT_INCLUDE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/DUT ${CMAKE_CURRENT_SOURCE_DIR}/testcases ${CMAKE_SOURCE_DIR}/Stubs)
 LINK_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CUNIT_LIBRARY_PATH})
